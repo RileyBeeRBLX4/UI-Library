@@ -77,8 +77,8 @@ end)
 
 ## Creating a Dropdown
 ```lua
-Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
-	print(txt)
+Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Option 3"}, function(currentOption)
+    print(currentOption)
 end)
 ```
 
