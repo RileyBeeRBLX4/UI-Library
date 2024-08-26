@@ -3,7 +3,7 @@ This documentation is for Venyx UI Credit To Baxo
 
 ## Booting the Venyx UI PC Library
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/Kitsune-Hub/main/Kitsune%20PC%20UI/Library.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/Roblox-UI-Library/Venyx%20UI/Library.lua"))()
 ```
 
 
@@ -11,7 +11,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Riley
 
 ## Creating a Venyx UI PC Window
 ```lua
-local Venyx = Library.New("Venyx UI", 5013109572)
+local Venyx = library.new("Venyx UI", 5013109572)
 ```
 
 ## Creating a Tab
