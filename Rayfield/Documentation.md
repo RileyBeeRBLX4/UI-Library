@@ -3,7 +3,7 @@ This documentation is for Rayfield Credit To Sirius And shlexware
 
 ## Booting the Rayfield Library
 ```lua
-local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/Draggable/main/Draggable.txt"))()
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/Roblox-UI-Library/main/Rayfield/Library.lua"))()
 ```
 
 
