@@ -57,20 +57,20 @@ Fluent:Notify({
 ## Creating a Button
 ```lua
 Tabs.Main:AddButton({
-        Title = "Button",
-        Description = "Very important button",
-        Callback = function()
-        -- Your Script Here
-        end
-    })
+    Title = "Button",
+    Description = "Very important button",
+    Callback = function()
+    -- Your Script Here
+    end
+})
 ```
 
 
 ## Creating a Checkbox toggle
 ```lua
-local Toggle = Tabs.Visuals:AddToggle("MyToggle", { Title = "Toggle", Default = false })
+local Toggle = Tabs.Main:AddToggle("MyToggle", { Title = "Toggle", Default = false })
 Toggle:OnChanged(function(Value)
-
+print(Value)
 end)
 ```
 
@@ -99,17 +99,16 @@ Slider:SetValue(3)
 
 ## Creating a Dropdown
 ```lua
+-- Choose Player Dropdown
 local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
-        Title = "Dropdown",
-        Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
-        Multi = false,
-        Default = 1,
-    })
-
-Dropdown:SetValue("four")
+    Title = "Choose Number",
+    Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+    Multi = false,
+    Default = 1,
+})
 
 Dropdown:OnChanged(function(Value)
-print("Dropdown changed:", Value)
+print(Value)
 end)
 ```
 
@@ -195,15 +194,15 @@ print("Keybind changed!", New)
 ## Create a Input
 ```lua
 local Input = Tabs.Main:AddInput("Input", {
-        Title = "Input",
-        Default = "Default",
-        Placeholder = "Placeholder",
-        Numeric = false, -- Only allows numbers
-        Finished = false, -- Only calls callback when you press enter
-        Callback = function(Value)
-            print("Input changed:", Value)
-        end
-    })
+    Title = "Input",
+    Default = "Default",
+    Placeholder = "Placeholder",
+    Numeric = true, -- Allows only numbers
+    Finished = false,
+    Callback = function(Value)
+    -- Your Script Here
+    end
+})
 ```
 
 
