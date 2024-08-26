@@ -68,13 +68,10 @@ Tabs.Main:AddButton({
 
 ## Creating a Checkbox toggle
 ```lua
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+local Toggle = Tabs.Visuals:AddToggle("MyToggle", { Title = "Toggle", Default = false })
+Toggle:OnChanged(function(Value)
 
-Toggle:OnChanged(function()
-print("Toggle changed:", Options.MyToggle.Value)
 end)
-
-Options.MyToggle:SetValue(false)
 ```
 
 ## Creating a Slider
