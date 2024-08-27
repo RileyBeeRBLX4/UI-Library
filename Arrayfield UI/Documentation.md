@@ -60,10 +60,6 @@ local Section = Tab:CreateSection("Section Example",false) - Section
 ```lua
 local Button = Tab:CreateButton({
         Name = "Button Example",
-        Info = {
-            Title = 'This is a Button',
-            Description = 'This is a description for the button you know.',
-        },
         Interact = 'Changable',
         Callback = function()
             print('Pressed')
@@ -75,13 +71,8 @@ local Button = Tab:CreateButton({
 ```lua
 local Toggle = Tab:CreateToggle({
         Name = "Toggle Example",
-        Info = {
-            Title = 'Slider template',
-            Image = '12735851647',
-            Description = 'Just a slider for stuff',
-        },
         CurrentValue = false,
-        Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+        Flag = "Toggle1",
         Callback = function(Value)
             print(Value)
         end,
