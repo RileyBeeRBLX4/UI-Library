@@ -100,7 +100,7 @@ Depbox:AddDivider();
 
 
 ## Creating a Slider Dependency Box
-```lu
+```lua
 Depbox:AddSlider("DepboxSlider", {
     ["Text"] = "WalkSpeed",
     ["Default"] = 35,
