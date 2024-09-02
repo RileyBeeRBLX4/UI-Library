@@ -48,7 +48,7 @@ end});
 
 ## Creating a Button
 ```lua
-LeftGroupBox:AddToggle("Button", function()
+LeftGroupBox:AddButton("Button", function()
 print("Clicked")
 end);
 ```
