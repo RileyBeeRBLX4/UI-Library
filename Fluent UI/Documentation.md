@@ -30,10 +30,16 @@ local Options = Fluent.Options
 
 ## Creating a Tab
 ```lua
+local Section = Tabs.Main:AddSection("Section Name")
+```
+
+## Creating a Section
+```lua
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
 }
 ```
+
 ## Creating a Tab (With Settings)
 ```lua
 local Tabs = {
