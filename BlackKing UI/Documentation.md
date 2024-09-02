@@ -13,13 +13,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/K
 
 ## Creating a BlackKing UI Window
 ```lua
-local Window = Library:CreateWindow({
-    ["Title"] = "hi"
-    ["Center"] = true,
-    ["AutoShow"] = true,
-    ["TabPadding"] = 0,
-    ["MenuFadeTime"] = 0.2
-});
+local Window = Library:CreateWindow({["Title"]=("test"),["Center"]=true,["AutoShow"]=true,["TabPadding"]=0,["MenuFadeTime"]=0.2});
 ```
 
 ## Creating a Library Notify
@@ -35,31 +29,35 @@ local Tabs = {
 local tapbox = Tabs.Main:AddLeftTabbox();
 ```
 
+## Creating a Left Group Box Tab
+```lua
+local LeftGroupBox = tapbox:AddTab("test");
+```
+
+## Creating a Left Divider
+```lua
+LeftGroupBox:AddDivider();
+```
+
 ## Creating a Slider
 ```lua
-LeftGroupBox:AddSlider("MySliderspeed", {
-    ["Text"] = "Speed Boosts",
-    ["Default"] = 6,
-    ["Min"] = 1,
-    ["Max"] = 6,
-    ["Rounding"] = 0,
-    ["Compact"] = true,
-    ["Callback"] = function(SelectBootsez)
-        _G.SelectBoots = SelectBootsez;
-    end
-});
+LeftGroupBox:AddSlider("MySliderspeed", {["Text"]="test",["Default"]=6,["Min"]=1,["Max"]=6,["Rounding"]=0,["Compact"]=true,["Callback"]=function(value)
+print(Value)
+end});
+```
+
+## Creating a Button
+```lua
+LeftGroupBox:AddToggle("Button", function()
+print("Clicked")
+end);
 ```
 
 ## Creating a Toggle
 ```lua
-LeftGroupBox:AddToggle("MyToggle", {
-    ["Text"] = "Enable Speed Boosts",
-    ["Default"] = false,
-    ["Tooltip"] = "Speed Boosts",
-    ["Callback"] = function(BootsSpeeds)
-        _G.BootsSpeed = BootsSpeeds;
-    end
-});
+LeftGroupBox:AddToggle("MyToggle", {["Text"]="test",["Default"]=false,["Tooltip"]="test",["Callback"]=function(value)
+print(Value)
+end});
 ```
 ```lua
 LeftGroupBox:AddToggle("ControlToggle", {
@@ -73,10 +71,36 @@ LeftGroupBox:AddToggle("ControlToggle", {
 });
 ```
 
+## Creating a Right Group Box Tab
+```lua
+local tapbox = Tabs.Main:AddRightTabbox();
+local LeftGroupBox = tapbox:AddTab("hi");
+```
+
+## Creating a Interact Box
+```lua
+local Interactbox = LeftGroupBox:AddDependencyBox();
+```
+You Can Put The Interact Box In The Left Group Box Tab Or Right Group Box Tab And You Can Put Them On The Coorsponding Like Under The Left Group Box Toggle Put It Under Then It Would Be On The Left Group Box Tab And The Same As Right Group Box Tab
+
+## Creating a Interact Box
+```lua
+Interactbox:AddDivider();
+```
+
 ## Creating a Dependency Box
 ```lua
 local Depbox = LeftGroupBox:AddDependencyBox();
+```
+
+## Creating a Divider Dependency Box
+```lua
 Depbox:AddDivider();
+```
+
+
+## Creating a Slider Dependency Box
+```lu
 Depbox:AddSlider("DepboxSlider", {
     ["Text"] = "WalkSpeed",
     ["Default"] = 35,
@@ -84,28 +108,58 @@ Depbox:AddSlider("DepboxSlider", {
     ["Max"] = 50,
     ["Rounding"] = 0,
     ["Compact"] = true,
-    ["Callback"] = function(WalkSpeedBypassCheats)
-        _G.WalkSpeedBypassCheat = WalkSpeedBypassCheats;
+    ["Callback"] = function(Value)
+    print("Slider")
     end
 });
+```
+
+## Creating a Textbox
+```lua
+LeftGroupBox:AddInput("MyTextbox", {["Default"]="test",["Numeric"]=false,["Finished"]=false,["Text"]="test",["Tooltip"]="test",["Placeholder"]="test",["Callback"]=function(value)
+print(Value)
+end});
+```
+
+## Creating a Keybind
+```lua
+LeftGroupBox:AddLabel("Keybind"):AddKeyPicker("Keybind", {["Default"]="RightControl",["NoUI"]=true,["Text"]="Keybind"});
 ```
 
 ## Creating a Color Picker
 ```lua
 LeftGroupBox:AddLabel("Door"):AddColorPicker("ColorPicker", {
     ["Default"] = Color3.fromRGB(5, 255, 0),
-    ["Title"] = "Doors Color",
+    ["Title"] = "Colorpicker",
     ["Transparency"] = nil,
-    ["Callback"] = function(DoorsColors)
-        _G.DoorsColor = DoorsColors;
+    ["Callback"] = function(value)
+    print(Value)
     end
 });
-
 ```
 
-## Creating a Watermark
+## Creating a Tab For Config
+```lua
+local TestTab = Tabs["Tab"]:AddLeftGroupbox("Hi");
+```
+ 
+## Creating a Watermark (Broken)
 ```lua
 local WatermarkConnection = game:GetService("RunService").RenderStepped:Connect(function()
     Library:SetWatermark(("sigma hub":format(math.floor(FPS), math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()), math.floor(game.Players.LocalPlayer.Character:GetAttribute("Oxygen"))));
 end);
+```
+
+## Config
+```lua
+Library.ToggleKeybind = Options.MenuKeybind;
+ThemeManager:SetLibrary(Library);
+SaveManager:SetLibrary(Library);
+SaveManager:IgnoreThemeSettings();
+SaveManager:SetIgnoreIndexes({"Keybind"});
+ThemeManager:SetFolder("MyScriptHub");
+SaveManager:SetFolder("MyScriptHub/Test");
+SaveManager:BuildConfigSection(Tabs["Test"]);
+ThemeManager:ApplyToTab(Tabs["Test"]);
+SaveManager:LoadAutoloadConfig();
 ```
