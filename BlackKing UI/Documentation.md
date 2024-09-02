@@ -13,16 +13,6 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/K
 
 ## Creating a BlackKing UI Window
 ```lua
-local Window = Library.CreateLib("TITLE", "DarkTheme")
-```
-
-## Creating a Library Notify
-```lua
-Library:Notify("test notification");
-```
-
-## Creating a Window
-```lua
 local Window = Library:CreateWindow({
     ["Title"] = "hi"
     ["Center"] = true,
@@ -30,7 +20,11 @@ local Window = Library:CreateWindow({
     ["TabPadding"] = 0,
     ["MenuFadeTime"] = 0.2
 });
+```
 
+## Creating a Library Notify
+```lua
+Library:Notify("test notification");
 ```
 
 ## Creating a Tab
