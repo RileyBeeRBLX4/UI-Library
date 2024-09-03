@@ -180,8 +180,15 @@ local TestTab = Tabs["Tab"]:AddLeftGroupbox("Hi");
  
 ## Creating a Watermark
 ```lua
-Library:SetWatermark(("sigma hub":format(math.floor(FPS), math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue();
-end);
+local watermarkText = "Sigma Hub | %d fps | %d ms | %d Oxygen | Executor : %s"
+
+local fps = math.floor(FPS)
+local ping = math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
+local executorName = getexecutorname()
+
+local formattedWatermark = watermarkText:format(fps, ping, executorName)
+
+WatermarkUI.SetWatermark(formattedWatermark)
 ```
 
 ## Config
