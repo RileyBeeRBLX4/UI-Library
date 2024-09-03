@@ -180,7 +180,7 @@ local TestTab = Tabs["Tab"]:AddLeftGroupbox("Hi");
  
 ## Creating a Watermark
 ```lua
-local watermarkText = "Sigma Hub | %d fps | %d ms | %d Oxygen | Executor : %s"
+local watermarkText = "Sigma Hub | %d fps | %d ms | Executor : %s"
 
 local fps = math.floor(FPS)
 local ping = math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
