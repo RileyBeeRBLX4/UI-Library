@@ -23,9 +23,11 @@ Library:Notify("test notification");
 
 ## Creating a Tab
 ```lua
-local Tabs = {
-    ["Main"] = Window:AddTab("Functions")
-};
+local Tabs = {["Main"]=Window:AddTab("Test")};
+```
+
+## Creating a Add Left TabBox
+```lua
 local tapbox = Tabs.Main:AddLeftTabbox();
 ```
 
@@ -46,6 +48,13 @@ print(Value)
 end});
 ```
 
+## Creating a Dropdown
+```lua
+LeftGroupBox:AddDropdown("Dropdown", {["Values"]={"One","Two","Three","Four"},["Default"]=1,["Multi"]=false,["Text"]="Dropdown",["Tooltip"]="Dropdown Test",["Callback"]=function(Value)
+print(Value)
+end});
+```
+
 ## Creating a Button
 ```lua
 LeftGroupBox:AddButton("Button", function()
@@ -56,27 +65,21 @@ end);
 ## Creating a Toggle
 ```lua
 LeftGroupBox:AddToggle("MyToggle", {["Text"]="test",["Default"]=false,["Tooltip"]="test",["Callback"]=function(value)
-print(Value)
+print(value)
 end});
-```
-```lua
-LeftGroupBox:AddToggle("ControlToggle", {
-    ["Text"] = "Bypass Anti Cheat",
-    ["Default"] = false,
-    ["Tooltip"] = "Bypass Anti Cheat",
-    ["Callback"] = function(BypassCheats)
-        _G.AntiCheat = BypassCheats;
-        -- Logic to bypass anti-cheat goes here
-    end
-});
 ```
 
 ## Creating a Right Group Box Tab
 ```lua
 local tapbox = Tabs.Main:AddRightTabbox();
-local LeftGroupBox = tapbox:AddTab("hi");
 ```
 
+## Creating a Right Group Box Tab (Section)
+```lua
+local LeftGroupBox = tapbox:AddTab("test");
+```
+
+## Interact Box & Tabs & Function
 ## Creating a Interact Box
 ```lua
 local Interactbox = LeftGroupBox:AddDependencyBox();
@@ -87,7 +90,28 @@ You Can Put The Interact Box In The Left Group Box Tab Or Right Group Box Tab An
 ```lua
 Interactbox:AddDivider();
 ```
+## Creating a Slider Interact Box
+```lua
+Interactbox:AddSlider("MySlider", {["Text"]="Slider",["Default"]=35,["Min"]=16,["Max"]=50,["Rounding"]=0,["Compact"]=true,["Callback"]=function(Value)
+print(Value)
+end});
+```
 
+## Creating a Toggle Interact Box
+```lua
+Interactbox:AddToggle("MyToggle", {["Text"]="Toggle",["Default"]=false,["Tooltip"]="Toggle Test",["Callback"]=function(Value)
+print(Value)
+end});
+```
+
+## Creating a Interact Button Box
+```lua
+Interactbox:AddButton("Button", function()
+print("Clicked")
+end);
+```
+
+### Dependency Tabs & Function
 ## Creating a Dependency Box
 ```lua
 local Depbox = LeftGroupBox:AddDependencyBox();
@@ -101,17 +125,28 @@ Depbox:AddDivider();
 
 ## Creating a Slider Dependency Box
 ```lua
-Depbox:AddSlider("DepboxSlider", {
-    ["Text"] = "WalkSpeed",
-    ["Default"] = 35,
-    ["Min"] = 16,
-    ["Max"] = 50,
-    ["Rounding"] = 0,
-    ["Compact"] = true,
-    ["Callback"] = function(Value)
-    print("Slider")
-    end
-});
+Depbox:AddSlider("DepboxSlider", {["Text"]="Slider",["Default"]=35,["Min"]=16,["Max"]=50,["Rounding"]=0,["Compact"]=true,["Callback"]=function(Value)
+print(Value)
+end});
+```
+
+## Creating a Toggle Dependency Box
+```lua
+Depbox:AddToggle("DepboxToggle", {["Text"]="Toggle",["Default"]=false,["Tooltip"]="Toggle Test",["Callback"]=function(Value)
+print(Value)
+end});
+```
+
+## Creating a Button Dependency Box
+```lua
+Depbox:AddButton("Button", function()
+print("Clicked")
+end);
+```
+
+## Setting Up Dependency
+```lua
+Depbox:SetupDependencies({{Toggles.MyToggle,true}});
 ```
 
 ## Creating a Textbox
@@ -143,10 +178,9 @@ LeftGroupBox:AddLabel("Door"):AddColorPicker("ColorPicker", {
 local TestTab = Tabs["Tab"]:AddLeftGroupbox("Hi");
 ```
  
-## Creating a Watermark (Broken)
+## Creating a Watermark
 ```lua
-local WatermarkConnection = game:GetService("RunService").RenderStepped:Connect(function()
-    Library:SetWatermark(("sigma hub":format(math.floor(FPS), math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()), math.floor(game.Players.LocalPlayer.Character:GetAttribute("Oxygen"))));
+Library:SetWatermark(("sigma hub":format(math.floor(FPS), math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue();
 end);
 ```
 
