@@ -500,42 +500,38 @@ function Library:Create(table)
     end
 
 --// Draggable
-local dragging, dragInput, dragStart, startPos
+local UIS = game:GetService('UserInputService')
+local frame = Instances.mainframe
+local dragToggle = nil
+local dragSpeed = 0.25
+local dragStart = nil
+local startPos = nil
 
-local function update(input)
+local function updateInput(input)
     local delta = input.Position - dragStart
-    local newPos = UDim2.fromOffset(
-        math.clamp(startPos.X.Offset + delta.X, 0, dark_UI.AbsoluteSize.X - main.AbsoluteSize.X),
-        math.clamp(startPos.Y.Offset + delta.Y, 0, dark_UI.AbsoluteSize.Y - main.AbsoluteSize.Y)
-    )
-
-    TweenService:Create(main, TweenInfo.new(0.1), {Position = newPos}):Play()
-    TweenService:Create(shadow, TweenInfo.new(0.1), {Position = newPos}):Play()
+    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+        startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
 end
 
-main.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true
+frame.InputBegan:Connect(function(input)
+    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+        dragToggle = true
         dragStart = input.Position
-        startPos = main.Position
-
+        startPos = frame.Position
         input.Changed:Connect(function()
             if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
+                dragToggle = false
             end
         end)
     end
 end)
 
-main.InputChanged:Connect(function(input)
+UIS.InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
-    end
-end)
-
-RunService.RenderStepped:Connect(function()
-    if dragging and dragInput then
-        update(dragInput)
+        if dragToggle then
+            updateInput(input)
+        end
     end
 end)
 
