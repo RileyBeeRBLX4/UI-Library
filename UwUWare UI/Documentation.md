@@ -11,12 +11,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Riley
 
 ## Creating a UwUWare UI Window
 ```lua
-local Window = Library:CreateWindow("UI")
+local Window = Library:CreateWindow"Window"
 ```
 
 ## Creating a Section
 ```lua
-local Folder = Window:AddFolder("Hi")
+Window:AddFolder"Folder"
 ```
 
 ## Creating a Label
