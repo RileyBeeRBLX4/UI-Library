@@ -3,7 +3,7 @@ This documentation is for UwUWare UI Credit To The Owner
 
 ## Booting the UwUWare UI Library
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/UI-Library/main/UwUWare%20UI/Library.lua", true))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/test", true))()
 ```
 
 
