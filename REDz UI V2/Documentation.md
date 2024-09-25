@@ -3,7 +3,7 @@ This documentation is for RedZ UI V2 Credit To REDZ
 
 ## Booting the RedZ UI V2 UI Library
 ```lua
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/RileyBeeRBLX4/Kitsune-Hub/main/Library.lua")))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/UI-Library/refs/heads/main/REDz%20UI%20V2/Library.lua"))()
 ```
 
 
