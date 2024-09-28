@@ -43,9 +43,9 @@ For The Section You Can Set The Position To Right Or To The Left
 Section:NewToggle({
 	Title = "Toggle",
 	Default = false,
-	Callback = function(Value)
+	Callback = function()
         -- Your Script Here
-	end
+	end,
 })
 ```
 
@@ -54,8 +54,8 @@ Section:NewToggle({
 Section:NewButton({
 	Title = "Button",
 	Callback = function()
-        print("Hi")
-	end
+        -- Your Script Here
+	end,
 })
 ```
 
@@ -68,7 +68,7 @@ Section:NewSlider({
 	Default = 25,
 	Callback = function(a)
 		print(a)
-	end
+	end,
 })
 ```
 
@@ -79,7 +79,7 @@ Section:NewKeybind({
 	Default = Enum.KeyCode.RightAlt,
 	Callback = function(a)
 		print(a)
-	end
+	end,
 })
 ```
 
@@ -91,7 +91,7 @@ Section:NewDropdown({
 	Default = 1,
 	Callback = function(a)
 		print(a)
-	end
+	end,
 })
 ```
 
