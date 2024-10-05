@@ -3,7 +3,7 @@ This documentation is for Vape UI Credit To dawid
 
 ## Booting the Vape UI Library
 ```lua
-local Library = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt"))()
 ```
 
 
