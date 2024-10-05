@@ -3,7 +3,7 @@ This documentation is for Discord Library UI Credit To The Owner
 
 ## Booting the Discord Library UI Library
 ```lua
-local Library = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyBeeRBLX4/UI-Library/refs/heads/DiscordLibrary%20UI/main/Library.lua"))()
 ```
 
 
