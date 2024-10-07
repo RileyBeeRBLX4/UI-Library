@@ -11,6 +11,18 @@ local NothingLibrary = loadstring(game:HttpGetAsync('https://raw.githubuserconte
 
 ## Creating a Nothing UI Window
 ```lua
+local Notification = NothingLibrary.Notification();
+
+Notification.new({
+	Title = "Notification",
+	Description = "Example",
+	Duration = 5,
+	Icon = "rbxassetid://8997385628"
+})
+```
+
+## Creating a Notification
+```lua
 local Windows = NothingLibrary.new({
 	Title = "NOTHING",
 	Description = "Nothing UI Library",
@@ -18,6 +30,7 @@ local Windows = NothingLibrary.new({
 	Logo = 'http://www.roblox.com/asset/?id=18898582662'
 })
 ```
+
 
 ## Creating a Tab
 ```lua
@@ -94,6 +107,16 @@ Section:NewDropdown({
 	end,
 })
 ```
+```lua
+Section:NewDropdown({
+	Title = "Dropdown",
+	Data = {'Option 1','Option 2','Option 3'},
+	Default = 'Auto',
+	Callback = function(a)
+		print(a)
+	end,
+})
+```
 
 ## Creating a Label
 ```lua
@@ -108,4 +131,20 @@ InfoSection:NewButton({
 		print('hi')
 	end,
 })
+```
+
+## Key System
+```lua
+NothingLibrary.NewAuth({
+	Title = "Neuron X",
+	GetKey = function() 
+		return 'https://example.com/key'
+	end,
+	Auth = function(MAIN_KEY)
+		if MAIN_KEY.Name == '1234' then
+			return true;
+		end;
+	end,
+	Freeze = true,
+}).Close();
 ```
