@@ -792,22 +792,40 @@ function Material.Load(Config)
 	TitleText.Font = Enum.Font.GothamBold
 	TitleText.Parent = TitleBar
 
-	TitleText.MouseButton1Down:Connect(function()
-		local Mx, My = Mouse.X, Mouse.Y
-		local MouseMove, MouseKill
-		MouseMove = Mouse.Move:Connect(function()
-			local nMx, nMy = Mouse.X, Mouse.Y
-			local Dx, Dy = nMx - Mx, nMy - My
-			MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-			Mx, My = nMx, nMy
-		end)
-		MouseKill = InputService.InputEnded:Connect(function(UserInput)
-			if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
-				MouseMove:Disconnect()
-				MouseKill:Disconnect()
-			end
-		end)
-	end)
+local UIS = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+TitleText.MouseButton1Down:Connect(function()
+    TitleText.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+            dragStart = input.Position
+            startPos = MainFrame.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    TitleText.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement then
+            dragInput = input
+        end
+    end)
+
+    UIS.InputChanged:Connect(function(input)
+        if dragging and input == dragInput then
+            local delta = input.Position - dragStart
+            MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+end)
 
 	local MinimiseButton = Objects.new("SmoothButton")
 	MinimiseButton.Size = UDim2.fromOffset(20,20)
