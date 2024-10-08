@@ -22,14 +22,14 @@ local X = Material.Load({
 
 ## Creating a Tab
 ```lua
-local Fun = X.New({
-    Title = "Hi"
+local Main = X.New({
+    Title = "Main"
 })
 ```
 
 ## Creating a Button
 ```lua
-local TestButton = Test.Button({
+local TestButton = Main.Button({
     Text = "test",
     Callback = function(value)
     print("value")
@@ -39,7 +39,7 @@ local TestButton = Test.Button({
 
 ## Creating a Toggle
 ```lua
-local TestToggle = Test.Toggle({
+local TestToggle = Main.Toggle({
 	Text = "hi",
 	Callback = function(Value)
   print(Value)
@@ -49,7 +49,7 @@ local TestToggle = Test.Toggle({
 
 ## Creating a Silder
 ```lua
-local TestSlider = Test.Slider({
+local TestSlider = Main.Slider({
 	Text = "Slider",
 	Callback = function(Value)
   print(Value)
@@ -62,7 +62,7 @@ local TestSlider = Test.Slider({
 
 ## Creating a Dropdown
 ```lua
-local TestDropdown = Test.Dropdown({
+local TestDropdown = Main.Dropdown({
 	Text = "dropdown",
 	Callback = function(Value)
 		print(Value)
