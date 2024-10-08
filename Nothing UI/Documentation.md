@@ -11,6 +11,16 @@ local NothingLibrary = loadstring(game:HttpGetAsync('https://raw.githubuserconte
 
 ## Creating a Nothing UI Window
 ```lua
+local Windows = NothingLibrary.new({
+	Title = "NOTHING",
+	Description = "Nothing UI Library",
+	Keybind = Enum.KeyCode.LeftControl,
+	Logo = 'http://www.roblox.com/asset/?id=18898582662'
+})
+```
+
+## Creating a Notification
+```lua
 local Notification = NothingLibrary.Notification();
 
 Notification.new({
@@ -18,16 +28,6 @@ Notification.new({
 	Description = "Example",
 	Duration = 5,
 	Icon = "rbxassetid://8997385628"
-})
-```
-
-## Creating a Notification
-```lua
-local Windows = NothingLibrary.new({
-	Title = "NOTHING",
-	Description = "Nothing UI Library",
-	Keybind = Enum.KeyCode.LeftControl,
-	Logo = 'http://www.roblox.com/asset/?id=18898582662'
 })
 ```
 
