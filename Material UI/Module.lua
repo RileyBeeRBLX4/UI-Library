@@ -792,9 +792,6 @@ function Material.Load(Config)
 	TitleText.Font = Enum.Font.GothamBold
 	TitleText.Parent = TitleBar
 
-local MainFrame = script.Parent
-local TitleText = MainFrame:WaitForChild("TitleText")
-
 local dragging
 local dragInput
 local dragStart
