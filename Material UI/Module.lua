@@ -792,6 +792,7 @@ function Material.Load(Config)
 	TitleText.Font = Enum.Font.GothamBold
 	TitleText.Parent = TitleBar
 
+
 local dragging
 local dragInput
 local dragStart
@@ -821,9 +822,11 @@ TitleText.MouseButton1Down:Connect(function()
         end
     end)
 
-    TitleText.MouseButton1Up:Connect(function()
-        dragging = false
-        connection:Disconnect()
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = false
+            connection:Disconnect()
+        end
     end)
 end)
 	
