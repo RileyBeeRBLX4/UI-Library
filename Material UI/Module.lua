@@ -795,26 +795,33 @@ function Material.Load(Config)
 
 local Mx, My = Mouse.X, Mouse.Y
 local MouseMove, MouseKill
+local dragging = false
 
 MouseMove = Mouse.Move:Connect(function()
-	local nMx, nMy = Mouse.X, Mouse.Y
-	local Dx, Dy = nMx - Mx, nMy - My
-	MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-	Mx, My = nMx, nMy
+	if dragging then
+		local nMx, nMy = Mouse.X, Mouse.Y
+		local Dx, Dy = nMx - Mx, nMy - My
+		MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+		Mx, My = nMx, nMy
+	end
 end)
 
 local function onTouchMove(touch)
-	local nMx, nMy = touch.Position.X, touch.Position.Y
-	local Dx, Dy = nMx - Mx, nMy - My
-	MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-	Mx, My = nMx, nMy
+	if dragging then
+		local nMx, nMy = touch.Position.X, touch.Position.Y
+		local Dx, Dy = nMx - Mx, nMy - My
+		MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+		Mx, My = nMx, nMy
+	end
 end
 
 MouseKill = InputService.InputEnded:Connect(function(UserInput)
 	if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
+		dragging = false
 		MouseMove:Disconnect()
 		MouseKill:Disconnect()
 	elseif UserInput.UserInputType == Enum.UserInputType.Touch then
+		dragging = false
 		MouseKill:Disconnect()
 	end
 end)
@@ -822,21 +829,24 @@ end)
 InputService.TouchMoved:Connect(onTouchMove)
 
 TitleText.MouseButton1Down:Connect(function()
+	dragging = true -- Start dragging on mouse down
 	Mx, My = Mouse.X, Mouse.Y
 	MouseMove:Disconnect()
 	MouseMove = Mouse.Move:Connect(function()
-		local nMx, nMy = Mouse.X, Mouse.Y
-		local Dx, Dy = nMx - Mx, nMy - My
-		MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-		Mx, My = nMx, nMy
+		if dragging then
+			local nMx, nMy = Mouse.X, Mouse.Y
+			local Dx, Dy = nMx - Mx, nMy - My
+			MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+			Mx, My = nMx, nMy
+		end
 	end)
-
-	InputService.TouchMoved:Connect(onTouchMove)
 end)
 
 TitleText.TouchStarted:Connect(function(touch)
+	dragging = true
 	Mx, My = touch.Position.X, touch.Position.Y
 end)
+
 
 	
 	local MinimiseButton = Objects.new("SmoothButton")
