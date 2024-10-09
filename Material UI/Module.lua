@@ -792,63 +792,59 @@ function Material.Load(Config)
 	TitleText.Font = Enum.Font.GothamBold
 	TitleText.Parent = TitleBar
 
-
-local Mx, My = Mouse.X, Mouse.Y
+local Mx, My = 0, 0
 local MouseMove, MouseKill
 local dragging = false
 
+local function startDragging(x, y)
+    Mx, My = x, y
+    dragging = true
+end
+
+local function stopDragging()
+    dragging = false
+end
+
 MouseMove = Mouse.Move:Connect(function()
-	if dragging then
-		local nMx, nMy = Mouse.X, Mouse.Y
-		local Dx, Dy = nMx - Mx, nMy - My
-		MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-		Mx, My = nMx, nMy
-	end
+    if dragging then
+        local nMx, nMy = Mouse.X, Mouse.Y
+        local Dx, Dy = nMx - Mx, nMy - My
+        MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+        Mx, My = nMx, nMy
+    end
 end)
 
 local function onTouchMove(touch)
-	if dragging then
-		local nMx, nMy = touch.Position.X, touch.Position.Y
-		local Dx, Dy = nMx - Mx, nMy - My
-		MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-		Mx, My = nMx, nMy
-	end
+    if dragging then
+        local nMx, nMy = touch.Position.X, touch.Position.Y
+        local Dx, Dy = nMx - Mx, nMy - My
+        MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+        Mx, My = nMx, nMy
+    end
 end
 
 MouseKill = InputService.InputEnded:Connect(function(UserInput)
-	if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
-		dragging = false
-		MouseMove:Disconnect()
-		MouseKill:Disconnect()
-	elseif UserInput.UserInputType == Enum.UserInputType.Touch then
-		dragging = false
-		MouseKill:Disconnect()
-	end
+    if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
+        stopDragging()
+        MouseMove:Disconnect()
+        MouseKill:Disconnect()
+    elseif UserInput.UserInputType == Enum.UserInputType.Touch then
+        stopDragging()
+        MouseKill:Disconnect()
+    end
 end)
 
 InputService.TouchMoved:Connect(onTouchMove)
 
 TitleText.MouseButton1Down:Connect(function()
-	dragging = true -- Start dragging on mouse down
-	Mx, My = Mouse.X, Mouse.Y
-	MouseMove:Disconnect()
-	MouseMove = Mouse.Move:Connect(function()
-		if dragging then
-			local nMx, nMy = Mouse.X, Mouse.Y
-			local Dx, Dy = nMx - Mx, nMy - My
-			MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
-			Mx, My = nMx, nMy
-		end
-	end)
+    startDragging(Mouse.X, Mouse.Y)
 end)
 
 TitleText.TouchStarted:Connect(function(touch)
-	dragging = true
-	Mx, My = touch.Position.X, touch.Position.Y
+    startDragging(touch.Position.X, touch.Position.Y)
 end)
 
 
-	
 	local MinimiseButton = Objects.new("SmoothButton")
 	MinimiseButton.Size = UDim2.fromOffset(20,20)
 	MinimiseButton.Position = UDim2.fromScale(1,0) + UDim2.fromOffset(-25,5)
