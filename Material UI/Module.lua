@@ -794,7 +794,7 @@ function Material.Load(Config)
 
 
 TitleText.MouseButton1Down:Connect(function()
-local frame = MainFrame.Position
+local frame = MainFrame
 local dragging
 local dragInput
 local dragStart
