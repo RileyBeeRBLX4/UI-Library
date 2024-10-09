@@ -4,7 +4,7 @@ local Mouse = Player:GetMouse()
 local TextService = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
+local InputService = game:GetService("UserInputService")
 local CoreGuiService = game:GetService("CoreGui")
 local ContentService = game:GetService("ContentProvider")
 
@@ -793,37 +793,22 @@ function Material.Load(Config)
 	TitleText.Parent = TitleBar
 
 
-local frame = MainFrame
-local dragging
-local dragInput
-local dragStart
-local startPos
-local function update(input)
-        local delta = input.Position - dragStart
-		frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-frame.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = frame.Position
-                               input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-end)
-frame.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
+TitleText.MouseButton1Down:Connect(function()
+		local Mx, My = Mouse.X, Mouse.Y
+		local MouseMove, MouseKill
+		MouseMove = Mouse.Move:Connect(function()
+			local nMx, nMy = Mouse.X, Mouse.Y
+			local Dx, Dy = nMx - Mx, nMy - My
+			MainFrame.Position = MainFrame.Position + UDim2.fromOffset(Dx, Dy)
+			Mx, My = nMx, nMy
+		end)
+		MouseKill = InputService.InputEnded:Connect(function(UserInput)
+			if UserInput.UserInputType == Enum.UserInputType.MouseButton1 then
+				MouseMove:Disconnect()
+				MouseKill:Disconnect()
+			end
+		end)
 	end)
-UserInputService.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			update(input)
-		end
-end)
 	
 	local MinimiseButton = Objects.new("SmoothButton")
 	MinimiseButton.Size = UDim2.fromOffset(20,20)
