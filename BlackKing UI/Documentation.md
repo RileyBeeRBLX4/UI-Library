@@ -173,6 +173,14 @@ LeftGroupBox:AddLabel("Door"):AddColorPicker("ColorPicker", {
 });
 ```
 
+## Creating a Watermark
+```lua
+local RunService = game:GetService("RunService")
+RunService.RenderStepped:Connect(function()
+    Library:SetWatermark("test")
+end)
+```
+
 ## Creating a Tab For Config
 ```lua
 local TestTab = Tabs["Tab"]:AddLeftGroupbox("Hi");
