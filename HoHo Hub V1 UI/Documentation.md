@@ -3,7 +3,7 @@ This documentation is for HoHo Hub V1 UI Credit To acsu123
 
 ## Booting the HoHo Hub V1 UI Library
 ```lua
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/hoho_lib.lua", true))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/hoho_lib.lua", true))()
 ```
 
 
@@ -11,86 +11,86 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/H
 
 ## Creating a HoHo Hub V1 UI Window
 ```lua
-local win = lib:Window("HoHo|Hub","Game",Color3.new(0.333333, 0.666667, 1))
+local Window = Library:Window("HoHo|Hub","Game",Color3.new(0.333333, 0.666667, 1))
 ```
 
 ## Creating a Tab
 ```lua
-local tab = win:Tab("Main")
+local Tab = Window:Tab("Main")
 ```
 
 ## Creating a Label (For The Label Function)
 ```lua
-local label = tab:Label("Label", properties) --properties: {["Visible"] = false}
+local Label = Tab:Label("Label", properties) --properties: {["Visible"] = false}
 ```
 
 ## Creating a label
 ```lua
-label:NewLabel("Section", properties)
+Label:NewLabel("Section", properties)
 ```
 
 ## Creating a Line
 ```lua
-tab:Line()
+Tab:Line()
 ```
 
 ## Creating a Button
 ```lua
-tab:Button("Button", function()
+Tab:Button("Button", function()
 — Your Script Here
 end)
 ```
 
 ## Creating a Toggle
 ```lua
-local toggle = tab:Toggle("Toggle", false, function()
+local Toggle = Tab:Toggle("Toggle", false, function()
 — Your Script Here
 end) 
 ```
 
 ## Toggle Text
 ```lua
-toggle:NewText("Walk on Water")
+Toggle:NewText("Walk on Water")
 ```
 
 ## Toggle State
 ```lua
-toggle:NewState(true)
+Toggle:NewState(true)
 ```
 Can be set to true or false
 
 ## Creating a Slider
 ```lua
-local slider = tab:Slider("Slider",1,100,30,function()
+local Slider = Tab:Slider("Slider",1,100,30,function()
 print(hi)
 end)
 ```
 
 ## Creating a Dropdown
 ```lua
-local drop = tab:Dropdown("Dropdown", {"1", 2, 3}, function(hi)
+local Dropdown = Tab:Dropdown("Dropdown", {"1", 2, 3}, function(hi)
 print(hi)
 end)
 ```
 
 ## Dropdown Text
 ```lua
-drop:NewText("Drop New 2")
+Dropdown:NewText("Drop New 2")
 ```
 
 ## New Dropdown
 ```lua
-drop:NewDrop({Option 1,'Option 2',"Option 3"})
+Dropdown:NewDrop({Option 1,'Option 2',"Option 3"})
 ```
 
 ## Creating a Textbox
 ```lua
-local txtbox = tab:Textbox("Textbox","Textbox",function()
+local Textbox = Tab:Textbox("Textbox","Textbox",function()
 print(hi)
 end)
 ```
 
 ## Creating a Notification
 ```lua
-lib:Nof("notification",3)
+Library:Nof("notification",3)
 ```
