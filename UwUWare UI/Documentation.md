@@ -11,12 +11,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraS
 
 ## Creating a UwUWare UI Window
 ```lua
-local Window = Library:CreateWindow"Window"
+local Window = Library:CreateWindow("Window")
 ```
 
 ## Creating a Section
 ```lua
-Window:AddFolder"Folder"
+local Folder = Window:AddFolder("Main")
 ```
 
 ## Creating a Label
