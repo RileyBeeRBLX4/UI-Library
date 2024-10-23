@@ -109,7 +109,7 @@ Tab:AddTextbox({
 ```lua
 Tab:AddDropdown({
 	Title = "Dropdown",
-	Values = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
+	Values = {1,2,3,4,5,6,7,8,9,10},
 	Default = 5,
 	Callback = function(value)
 		print('Dropdown!',value)
@@ -121,8 +121,8 @@ Tab:AddDropdown({
 ```lua
 Tab:AddDropdown({
 	Title = "Multiple Dropdown",
-	Values = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
-	Default = {"3", "4", "5", "6", "7"}
+	Values = {1,2,3,4,5,6,7,8,9,10},
+	Default = {3,4,5,6,7},
 	Multi = true,
 	MaxMulti = 10,
 	Callback = function(value)
