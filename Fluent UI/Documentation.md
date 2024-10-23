@@ -217,7 +217,12 @@ local Input = Tabs.Main:AddInput("Input", {
 Tabs.Main:AddParagraph({
         Title = "Paragraph",
         Content = "This is a paragraph.\nSecond line!"
-    })
+})
+```
+
+## Creating a Label
+```lua
+Tabs.Main:AddParagraph({ Title = "Label", })
 ```
 
 ## Selecting A Main Tab 
