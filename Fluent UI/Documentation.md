@@ -55,10 +55,29 @@ Fluent:Notify({
         Content = "This is a notification",
         SubContent = "SubContent", -- Optional
         Duration = 5 -- Set to nil to make the notification not disappear
-    })
+})
 ```
 
-
+## Creating a Dialog
+```lua
+Window:Dialog({
+    Title = "Title",
+    Content = "This is a dialog",
+    Buttons = {
+        { 
+            Title = "Confirm",
+            Callback = function()
+                print("Confirmed the dialog.")
+            end 
+        }, {
+            Title = "Cancel",
+            Callback = function()
+                print("Cancelled the dialog.")
+            end 
+        }
+    }
+})
+```
 
 ## Creating a Button
 ```lua
